@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORÍKÌ — Wear your story</title>
+<meta name="description" content="ORÍKÌ is a contemporary African fashion house reworking Ankara, Kente, Adire and Aso-oke into modern ready-to-wear and made-to-order pieces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1F3B;
+    --ink-soft:#3A3F63;
+    --paper:#FBF6EC;
+    --paper-dim:#F1E9D8;
+    --marigold:#E8A93B;
+    --berry:#A3284B;
+    --leaf:#4C6444;
+    --line: rgba(27,31,59,0.14);
+    --maxw: 1180px;
+    --radius: 2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.05;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--berry);
+    outline-offset:3px;
+  }
+
+  /* ---------- Pattern blocks (stand-ins for photography) ---------- */
+  .swatch{
+    position:relative;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .swatch .tag{
+    position:absolute;
+    left:16px; bottom:14px;
+    color:var(--paper);
+    font-size:12px;
+    font-family:'Archivo',sans-serif;
+    letter-spacing:0.02em;
+    background:rgba(20,18,26,0.55);
+    padding:5px 10px;
+    border-radius:2px;
+  }
+  .pat-mud{
+    background-image: repeating-linear-gradient(45deg, rgba(251,246,236,0.14) 0 2px, transparent 2px 14px),
+      repeating-linear-gradient(-45deg, rgba(251,246,236,0.10) 0 2px, transparent 2px 14px),
+      linear-gradient(180deg, var(--ink), #10142c);
+  }
+  .pat-kente{
+    background-image:
+      repeating-linear-gradient(90deg, var(--marigold) 0 10px, var(--berry) 10px 20px, var(--ink) 20px 30px, var(--leaf) 30px 40px);
+    background-size: 40px 100%;
+  }
+  .pat-stripe{
+    background-image: repeating-linear-gradient(0deg, var(--paper) 0 8px, var(--berry) 8px 16px);
+  }
+  .pat-dot{
+    background-image: radial-gradient(circle, var(--marigold) 2.4px, transparent 2.6px);
+    background-size: 18px 18px;
+    background-color: var(--ink);
+  }
+  .pat-diamond{
+    background-image:
+      linear-gradient(45deg, var(--berry) 25%, transparent 25.5%, transparent 75%, var(--berry) 75.5%),
+      linear-gradient(45deg, var(--berry) 25%, transparent 25.5%, transparent 75%, var(--berry) 75.5%);
+    background-size: 34px 34px;
+    background-position: 0 0, 17px 17px;
+    background-color: var(--marigold);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .wordmark{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .navlinks{
+    display:flex; gap:30px; list-style:none; margin:0; padding:0;
+  }
+  .navlinks a{
+    text-decoration:none;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .navlinks a:hover{ color:var(--ink); border-color:var(--berry); }
+  .nav-cta{
+    display:inline-block;
+    font-size:14px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 18px;
+    text-decoration:none;
+    border-radius:2px;
+    border:1px solid var(--ink);
+    transition:background .15s ease, color .15s ease;
+  }
+  .nav-cta:hover{ background:transparent; color:var(--ink); }
+  .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:8px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .kicker{
+    font-size:14px;
+    color:var(--berry);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 68px);
+    max-width:11ch;
+  }
+  .hero-sub{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:17.5px;
+    color:var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:13px 24px;
+    text-decoration:none;
+    font-size:15px;
+    border-radius:2px;
+    border:1px solid var(--ink);
+  }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--berry); border-color:var(--berry); }
+  .btn-line{ background:transparent; color:var(--ink); }
+  .btn-line:hover{ background:var(--ink); color:var(--paper); }
+
+  .hero-art{
+    aspect-ratio: 4 / 5;
+    border-radius:2px;
+    position:relative;
+  }
+  .hero-art::before{
+    content:"";
+    position:absolute; inset:14px;
+    border:1px solid rgba(251,246,236,0.5);
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee-band{
+    background:var(--ink);
+    color:var(--paper);
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation: scroll 32s linear infinite;
+    padding:14px 0;
+  }
+  .marquee-track span{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:19px;
+    padding:0 26px;
+    white-space:nowrap;
+    color:var(--marigold);
+  }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:88px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:44px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  .section-head h2{ font-size:clamp(28px, 3.4vw, 40px); max-width:14ch; }
+  .section-head p{ max-width:34ch; color:var(--ink-soft); font-size:15px; }
+
+  /* ---------- Collections ---------- */
+  .collections{ background:var(--paper-dim); border-bottom:1px solid var(--line); }
+  .coll-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:22px;
+  }
+  .coll-card{ grid-column: span 2; }
+  .coll-card:first-child{ grid-column: span 2; grid-row: span 2; }
+  .coll-card .swatch{ aspect-ratio: 1 / 1; }
+  .coll-card:first-child .swatch{ aspect-ratio: 1/ 1.34; }
+  .coll-info{ padding-top:14px; display:flex; justify-content:space-between; gap:12px; }
+  .coll-info h3{ font-size:20px; font-weight:500; }
+  .coll-info .from{ font-size:14px; color:var(--ink-soft); white-space:nowrap; }
+  .coll-info .desc{ font-size:14px; color:var(--ink-soft); margin-top:4px; }
+
+  /* ---------- Story ---------- */
+  .story-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .story-art{ aspect-ratio: 5/6; }
+  .story h2{ font-size:clamp(30px,4vw,44px); max-width:12ch; }
+  .story-body{ margin-top:22px; max-width:52ch; color:var(--ink-soft); font-size:16.5px; }
+  .story-body p + p{ margin-top:14px; }
+  .signature{ margin-top:28px; font-family:'Fraunces',serif; font-style:italic; font-size:18px; }
+
+  /* ---------- Process ---------- */
+  .process{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .process-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:40px;
+  }
+  .process-item{ border-left:1px solid var(--line); padding-left:24px; }
+  .process-num{ font-family:'Fraunces',serif; font-size:15px; color:var(--berry); margin-bottom:14px; }
+  .process-item h3{ font-size:19px; font-weight:500; margin-bottom:10px; }
+  .process-item p{ color:var(--ink-soft); font-size:14.5px; }
+
+  /* ---------- Lookbook ---------- */
+  .lookbook-grid{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:18px;
+  }
+  .lb1{ grid-column:span 2; aspect-ratio:3/4; }
+  .lb2{ grid-column:span 2; aspect-ratio:3/4; margin-top:36px; }
+  .lb3{ grid-column:span 2; aspect-ratio:3/4; }
+
+  /* ---------- Contact ---------- */
+  .contact{ background:var(--ink); color:var(--paper); }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:60px;
+  }
+  .contact h2{ color:var(--paper); font-size:clamp(28px,3.6vw,40px); max-width:12ch; }
+  .contact-lede{ margin-top:18px; color:rgba(251,246,236,0.75); max-width:40ch; }
+  .contact-list{ margin-top:34px; list-style:none; padding:0; }
+  .contact-list li{ padding:14px 0; border-top:1px solid rgba(251,246,236,0.18); font-size:15px; }
+  .contact-list li:last-child{ border-bottom:1px solid rgba(251,246,236,0.18); }
+  .contact-list .label{ color:var(--marigold); display:block; font-size:12.5px; margin-bottom:4px; }
+
+  form{ display:grid; gap:16px; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  label{ font-size:13px; color:rgba(251,246,236,0.7); display:block; margin-bottom:7px; }
+  input, textarea{
+    width:100%;
+    background:transparent;
+    border:0;
+    border-bottom:1px solid rgba(251,246,236,0.35);
+    color:var(--paper);
+    font-family:'Archivo',sans-serif;
+    font-size:15px;
+    padding:9px 2px;
+  }
+  input::placeholder, textarea::placeholder{ color:rgba(251,246,236,0.35); }
+  textarea{ resize:vertical; min-height:90px; }
+  .form-submit{
+    margin-top:6px;
+    justify-self:start;
+    background:var(--marigold);
+    border:1px solid var(--marigold);
+    color:var(--ink);
+    padding:13px 26px;
+    font-size:15px;
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .form-submit:hover{ background:transparent; color:var(--marigold); }
+  .form-note{ font-size:12.5px; color:rgba(251,246,236,0.5); margin-top:4px; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:30px 0; }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+    font-size:13px; color:var(--ink-soft);
+  }
+  .foot-links{ display:flex; gap:20px; list-style:none; padding:0; margin:0; }
+  .foot-links a{ text-decoration:none; color:var(--ink-soft); }
+  .foot-links a:hover{ color:var(--ink); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 920px){
+    .hero-grid, .story-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; aspect-ratio: 16/10; }
+    .story-art{ aspect-ratio:16/9; }
+    .coll-grid{ grid-template-columns: repeat(2,1fr); }
+    .coll-card:first-child{ grid-column:span 2; grid-row:auto; }
+    .coll-card:first-child .swatch{ aspect-ratio:16/10; }
+    .process-grid{ grid-template-columns:1fr; gap:30px; }
+    .lookbook-grid{ grid-template-columns: repeat(2,1fr); }
+    .lb1,.lb2,.lb3{ grid-column:span 1; margin-top:0; }
+    .form-row{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 720px){
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--paper);
+      flex-direction:column; gap:0;
+      border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .navlinks.open{ display:flex; }
+    .navlinks a{ padding:16px 28px; border-bottom:1px solid var(--line); width:100%; }
+    .nav-toggle{ display:block; }
+    .nav-cta{ display:none; }
+    .section-head{ flex-direction:column; align-items:flex-start; gap:10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="wordmark">ORÍKÌ</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#process">Made to order</a></li>
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a fitting</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Contemporary West African ready-to-wear</p>
+        <h1>Cloth carries memory.</h1>
+        <p class="hero-sub">ORÍKÌ reworks Ankara, Kente, Adire and Aso-oke into considered, modern silhouettes — cut in small runs and finished by hand in our Accra atelier.</p>
+        <div class="hero-actions">
+          <a href="#collections" class="btn btn-solid">View the collection</a>
+          <a href="#process" class="btn btn-line">How made-to-order works</a>
+        </div>
+      </div>
+      <div class="hero-art swatch pat-mud">
+        <span class="tag">Lead photograph — placeholder</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-band" role="presentation">
+    <div class="marquee-track">
+      <span>Ankara</span><span>Kente</span><span>Adire</span><span>Aso-oke</span><span>Kitenge</span><span>Bògòlanfini</span>
+      <span>Ankara</span><span>Kente</span><span>Adire</span><span>Aso-oke</span><span>Kitenge</span><span>Bògòlanfini</span>
+    </div>
+  </div>
+
+  <section class="collections" id="collections">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Current collections</h2>
+        <p>Four capsules, each named for the moment it's cut for. Swap these blocks for your own product photography.</p>
+      </div>
+      <div class="coll-grid">
+        <div class="coll-card">
+          <div class="swatch pat-kente"><span class="tag">Product photo — placeholder</span></div>
+          <div class="coll-info">
+            <div>
+              <h3>Market Days</h3>
+              <p class="desc">Everyday wax-print separates cut for movement.</p>
+            </div>
+            <span class="from">From GH₵350</span>
+          </div>
+        </div>
+        <div class="coll-card">
+          <div class="swatch pat-diamond"><span class="tag">Product photo — placeholder</span></div>
+          <div class="coll-info">
+            <div><h3>Golden Hour</h3><p class="desc">Occasion pieces in silk-blend Kente.</p></div>
+            <span class="from">From GH₵980</span>
+          </div>
+        </div>
+        <div class="coll-card">
+          <div class="swatch pat-stripe"><span class="tag">Product photo — placeholder</span></div>
+          <div class="coll-info">
+            <div><h3>Homecoming</h3><p class="desc">Tailored sets for weddings and durbars.</p></div>
+            <span class="from">From GH₵1,200</span>
+          </div>
+        </div>
+        <div class="coll-card">
+          <div class="swatch pat-dot"><span class="tag">Product photo — placeholder</span></div>
+          <div class="coll-info">
+            <div><h3>Everyday Regal</h3><p class="desc">Indigo Adire basics for daily wear.</p></div>
+            <span class="from">From GH₵280</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap story-grid">
+      <div class="story-art swatch pat-diamond"><span class="tag">Founder photo — placeholder</span></div>
+      <div>
+        <h2>Built on a name, not a trend.</h2>
+        <div class="story-body">
+          <p>Orikì began in a two-machine sewing room in Accra, reworking fabric passed down from a grandmother who traded cloth at Makola Market. The name means "praise name" — the lines recited to remind someone who they are.</p>
+          <p>Replace this paragraph with your own founding story: where you learned to sew, who taught you, and why the first collection looked the way it did.</p>
+        </div>
+        <p class="signature">— Founder name, Creative Director</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How made-to-order works</h2>
+        <p>Three steps from consultation to collection.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-item">
+          <p class="process-num">01</p>
+          <h3>Consultation</h3>
+          <p>Message us your measurements and occasion. We reply with fabric options within two working days.</p>
+        </div>
+        <div class="process-item">
+          <p class="process-num">02</p>
+          <h3>Fitting</h3>
+          <p>A toile is cut and fitted, in person at the atelier or by video for overseas clients.</p>
+        </div>
+        <div class="process-item">
+          <p class="process-num">03</p>
+          <h3>Delivery</h3>
+          <p>Finished pieces ship in 3–4 weeks, packed in reusable Ankara wraps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lookbook" id="lookbook">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Lookbook</h2>
+        <p>Selects from the latest campaign. Replace with your own shoot.</p>
+      </div>
+      <div class="lookbook-grid">
+        <div class="lb1 swatch pat-mud"><span class="tag">Look 01</span></div>
+        <div class="lb2 swatch pat-kente"><span class="tag">Look 02</span></div>
+        <div class="lb3 swatch pat-diamond"><span class="tag">Look 03</span></div>
+        <div class="lb1 swatch pat-stripe"><span class="tag">Look 04</span></div>
+        <div class="lb2 swatch pat-dot"><span class="tag">Look 05</span></div>
+        <div class="lb3 swatch pat-mud"><span class="tag">Look 06</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Start an order or ask a question.</h2>
+        <p class="contact-lede">Most replies land within one working day. For rush occasion wear, mention your date and we'll flag it.</p>
+        <ul class="contact-list">
+          <li><span class="label">WhatsApp</span>+233 00 000 0000</li>
+          <li><span class="label">Email</span>hello@orikistudio.example</li>
+          <li><span class="label">Instagram</span>@oriki.studio</li>
+          <li><span class="label">Atelier</span>Osu, Accra — visits by appointment</li>
+        </ul>
+      </div>
+      <form id="contactForm">
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div>
+          <label for="occasion">What's the occasion?</label>
+          <input id="occasion" name="occasion" type="text" placeholder="Wedding, everyday wear, gift…">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what you're looking for, and any dates that matter."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+        <p class="form-note">This form is a placeholder — connect it to Formspree, Netlify Forms, or your own inbox before launch.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© <span id="year"></span> ORÍKÌ Studio. All rights reserved.</span>
+    <ul class="foot-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navlinks = document.getElementById('navlinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navlinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('This is a placeholder form. Connect it to Formspree, Netlify Forms, or your email service to receive real messages.');
+  });
+</script>
+
+</body>
+</html>
