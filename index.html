@@ -97,7 +97,13 @@
   }
   .navlinks a:hover{ color:var(--ink); border-color:var(--rust); }
   
-  /* ---------- Search Box ---------- */
+  /* ---------- Header Actions (Search & Cart) ---------- */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   .search-box {
     display: flex;
     align-items: center;
@@ -118,7 +124,7 @@
     outline: none;
     font-size: 13.5px;
     color: var(--ink);
-    width: 130px;
+    width: 120px;
     padding: 4px 0;
     transition: width 0.25s ease;
   }
@@ -140,6 +146,41 @@
   .search-btn:hover {
     background: var(--ink);
     color: var(--paper);
+  }
+
+  .cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  .cart-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--rust);
+    color: var(--paper);
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
 
   .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:8px; }
@@ -288,7 +329,7 @@
     .navlinks.open{ display:flex; }
     .navlinks a{ padding:16px 28px; border-bottom:1px solid var(--line); width:100%; }
     .nav-toggle{ display:block; }
-    .search-input{ width: 90px; }
+    .search-input{ width: 80px; }
     .section-head{ flex-direction:column; align-items:flex-start; gap:10px; }
     .foot-grid{ grid-template-columns:1fr; }
   }
@@ -306,14 +347,27 @@
       <li><a href="#story">ABOUT US</a></li>
     </ul>
     
-    <div class="search-box">
-      <input type="text" class="search-input" id="searchInput" placeholder="Search..." aria-label="Search">
-      <button type="button" class="search-btn" id="searchBtn" aria-label="Open Search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    <div class="header-actions">
+      <!-- Search Box -->
+      <div class="search-box">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <button type="button" class="search-btn" id="searchBtn" aria-label="Open Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cart Button -->
+      <a href="#cart" class="cart-btn" id="cartBtn" aria-label="Shopping Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
         </svg>
-      </button>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
     </div>
 
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
@@ -586,19 +640,23 @@
     const query = searchInput.value.trim();
     if (query) {
       alert('Searching for: ' + query);
-      // To redirect to a search results page in the future:
-      // window.location.href = '/search?q=' + encodeURIComponent(query);
     } else {
       searchInput.focus();
     }
   }
 
   searchBtn.addEventListener('click', handleSearch);
-
   searchInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  });
+
+  // Cart Button Interaction
+  const cartBtn = document.getElementById('cartBtn');
+  cartBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('Your shopping cart is currently empty.');
   });
 </script>
 
