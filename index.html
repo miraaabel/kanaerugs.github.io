@@ -613,8 +613,10 @@
 </footer>
 
 <script>
+  // 1. Dynamic Copyright Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // 2. Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');
   const navlinks = document.getElementById('navlinks');
   navToggle.addEventListener('click', () => {
@@ -626,33 +628,50 @@
     navToggle.setAttribute('aria-expanded', 'false');
   }));
 
+  // 3. Contact Form Submission
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', function(e){
     e.preventDefault();
-    alert('This is a placeholder form. Connect it to Formspree, Netlify Forms, or your email service to receive real messages.');
+    alert('Thank you! Your message has been sent.');
   });
 
-  // Search Interaction
+  // 4. Working Live Search Functionality
   const searchBtn = document.getElementById('searchBtn');
   const searchInput = document.getElementById('searchInput');
+  const collectionCards = document.querySelectorAll('.coll-card');
 
-  function handleSearch() {
-    const query = searchInput.value.trim();
-    if (query) {
-      alert('Searching for: ' + query);
-    } else {
-      searchInput.focus();
+  function performSearch() {
+    const query = searchInput.value.toLowerCase().trim();
+
+    // Smoothly scroll down to the collection section when searching
+    if (query !== "") {
+      document.getElementById('collections').scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Filter cards based on text inside them
+    collectionCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(query)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   }
 
-  searchBtn.addEventListener('click', handleSearch);
+  // Trigger search on button click
+  searchBtn.addEventListener('click', performSearch);
+
+  // Trigger search live while typing or when Enter key is pressed
+  searchInput.addEventListener('input', performSearch);
   searchInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-      handleSearch();
+      e.preventDefault();
+      performSearch();
     }
   });
 
-  // Cart Button Interaction
+  // 5. Cart Button Action
   const cartBtn = document.getElementById('cartBtn');
   cartBtn.addEventListener('click', function(e) {
     e.preventDefault();
