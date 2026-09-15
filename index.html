@@ -97,6 +97,15 @@
     background-size: 34px 34px; background-color: var(--brass);
   }
 
+  /* Responsive image styling */
+  .responsive-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
   /* ---------- Header & Nav ---------- */
   header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--line); }
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
@@ -178,7 +187,7 @@
   .btn-solid:hover { background: var(--indigo-deep); border-color: var(--indigo-deep); transform: translateY(-1px); }
   .btn-line { background: transparent; color: var(--ink); }
   .btn-line:hover { background: var(--ink); color: var(--paper); }
-  .hero-art { aspect-ratio: 4 / 5; position: relative; border-radius: 4px; }
+  .hero-art { aspect-ratio: 4 / 5; position: relative; border-radius: 4px; overflow: hidden; }
 
   /* ---------- Marquee ---------- */
   .marquee-band { background: var(--indigo-deep); overflow: hidden; border-bottom: 1px solid var(--line); }
@@ -215,7 +224,7 @@
 
   /* ---------- Story ---------- */
   .story-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
-  .story-art { aspect-ratio: 5/6; }
+  .story-art { aspect-ratio: 5/6; overflow: hidden; position: relative; }
   .story-body { margin-top: 22px; max-width: 52ch; color: var(--ink-soft); font-size: 16.5px; }
   .story-body p + p { margin-top: 14px; }
   .signature { margin-top: 28px; font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--rust); }
@@ -231,7 +240,7 @@
   /* ---------- Lookbook ---------- */
   .lookbook { background: var(--paper-dim); border-bottom: 1px solid var(--line); }
   .lookbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .lookbook-item { aspect-ratio: 3/4; cursor: pointer; transition: opacity 0.2s; }
+  .lookbook-item { aspect-ratio: 3/4; cursor: pointer; transition: opacity 0.2s; overflow: hidden; }
   .lookbook-item:hover { opacity: 0.9; }
   .lookbook-follow { margin-top: 40px; text-align: center; font-size: 14px; color: var(--ink-soft); }
   .lookbook-follow strong { color: var(--rust); }
@@ -385,6 +394,7 @@
 
 <main id="top">
 
+  <!-- Hero Section with gladysrug_pic.jpg integrated -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -396,7 +406,8 @@
           <a href="#process" class="btn btn-line">Made-to-Order Process</a>
         </div>
       </div>
-      <div class="hero-art swatch pat-mud">
+      <div class="hero-art swatch">
+        <img src="gladysrug_pic.jpg" alt="Model wearing Kanae Rugs handcrafted garment" class="responsive-img">
         <span class="tag">Atelier Highlight</span>
       </div>
     </div>
@@ -479,7 +490,10 @@
 
   <section class="story" id="story">
     <div class="wrap story-grid">
-      <div class="story-art swatch pat-diamond"><span class="tag">Accra Atelier</span></div>
+      <div class="story-art swatch">
+        <img src="gladysrug_pic.jpg" alt="Craftsmanship and heritage at Kanae Rugs" class="responsive-img">
+        <span class="tag">Accra Atelier</span>
+      </div>
       <div>
         <h2>Built on heritage, not trends.</h2>
         <div class="story-body">
@@ -524,12 +538,15 @@
         <p>Selects from our current Accra campaign series.</p>
       </div>
       <div class="lookbook-grid">
-        <div class="lookbook-item swatch pat-mud" onclick="openLightbox('pat-mud')"><span class="tag">Look 01</span></div>
-        <div class="lookbook-item swatch pat-kente" onclick="openLightbox('pat-kente')"><span class="tag">Look 02</span></div>
-        <div class="lookbook-item swatch pat-diamond" onclick="openLightbox('pat-diamond')"><span class="tag">Look 03</span></div>
-        <div class="lookbook-item swatch pat-stripe" onclick="openLightbox('pat-stripe')"><span class="tag">Look 04</span></div>
-        <div class="lookbook-item swatch pat-dot" onclick="openLightbox('pat-dot')"><span class="tag">Look 05</span></div>
-        <div class="lookbook-item swatch pat-mud" onclick="openLightbox('pat-mud')"><span class="tag">Look 06</span></div>
+        <div class="lookbook-item swatch" onclick="openLightbox('gladysrug_pic.jpg')">
+          <img src="gladysrug_pic.jpg" alt="Look 01" class="responsive-img">
+          <span class="tag">Look 01</span>
+        </div>
+        <div class="lookbook-item swatch pat-kente" onclick="openLightboxPattern('pat-kente')"><span class="tag">Look 02</span></div>
+        <div class="lookbook-item swatch pat-diamond" onclick="openLightboxPattern('pat-diamond')"><span class="tag">Look 03</span></div>
+        <div class="lookbook-item swatch pat-stripe" onclick="openLightboxPattern('pat-stripe')"><span class="tag">Look 04</span></div>
+        <div class="lookbook-item swatch pat-dot" onclick="openLightboxPattern('pat-dot')"><span class="tag">Look 05</span></div>
+        <div class="lookbook-item swatch pat-mud" onclick="openLightboxPattern('pat-mud')"><span class="tag">Look 06</span></div>
       </div>
       <p class="lookbook-follow">Tag <strong>@kanae.rugs</strong> on Instagram to be featured.</p>
     </div>
@@ -752,8 +769,15 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxTarget = document.getElementById('lightboxTarget');
 
-  function openLightbox(className) {
+  function openLightbox(imgSrc) {
+    lightboxTarget.className = 'lightbox-content swatch';
+    lightboxTarget.innerHTML = `<img src="${imgSrc}" style="width:100%; height:100%; object-fit:cover;">`;
+    lightbox.classList.add('active');
+  }
+
+  function openLightboxPattern(className) {
     lightboxTarget.className = `lightbox-content swatch ${className}`;
+    lightboxTarget.innerHTML = '';
     lightbox.classList.add('active');
   }
 
