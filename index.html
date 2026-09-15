@@ -3,30 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KANAE RUGS — Wear your story</title>
-<meta name="description" content="KANAE RUGS is a contemporary African fashion house reworking Ankara, Kente, Adire and Aso-oke into modern ready-to-wear and made-to-order pieces.">
+<title>Kanae Rugs — Heritage in every stitch</title>
+<meta name="description" content="Kanae Rugs is a contemporary Ghanaian fashion house reworking Ankara, Kente, Adire and Aso-oke into modern ready-to-wear and made-to-order pieces.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1B1F3B;
-    --ink-soft:#3A3F63;
-    --paper:#FBF6EC;
-    --paper-dim:#F1E9D8;
-    --marigold:#E8A93B;
-    --berry:#A3284B;
-    --leaf:#4C6444;
-    --line: rgba(27,31,59,0.14);
+    --ink:#141935;
+    --ink-soft:rgba(20,25,53,0.68);
+    --paper:#FFFFFF;
+    --paper-dim:#F4F1E7;
+    --brass:#C9A227;
+    --brass-light:#E3C468;
+    --rust:#A5502F;
+    --indigo-deep:#0A0D22;
+    --line: rgba(20,25,53,0.14);
+    --line-dark: rgba(244,239,225,0.16);
     --maxw: 1180px;
-    --radius: 2px;
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:#FFFFFF; 
+    background:var(--paper);
     color:var(--ink);
     font-family:'Archivo', sans-serif;
     font-size:16px;
@@ -50,296 +51,177 @@
   }
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-    outline:2px solid var(--berry);
+    outline:2px solid var(--rust);
     outline-offset:3px;
   }
 
   /* ---------- Pattern blocks (stand-ins for photography) ---------- */
-  .swatch{
-    position:relative;
-    overflow:hidden;
-    background:#FFFFFF;
-  }
+  .swatch{ position:relative; overflow:hidden; background:var(--indigo-deep); }
   .swatch .tag{
-    position:absolute;
-    left:16px; bottom:14px;
-    color:var(--paper);
-    font-size:12px;
-    font-family:'Archivo',sans-serif;
-    letter-spacing:0.02em;
-    background:rgba(20,18,26,0.55);
-    padding:5px 10px;
-    border-radius:2px;
+    position:absolute; left:16px; bottom:14px;
+    color:var(--paper); font-size:12px; font-family:'Archivo',sans-serif;
+    letter-spacing:0.02em; background:rgba(10,13,34,0.6);
+    padding:5px 10px; border-radius:2px;
   }
   .pat-mud{
-    background-image: repeating-linear-gradient(45deg, rgba(251,246,236,0.14) 0 2px, transparent 2px 14px),
-      repeating-linear-gradient(-45deg, rgba(251,246,236,0.10) 0 2px, transparent 2px 14px),
-      linear-gradient(180deg, var(--ink), #10142c);
+    background-image: repeating-linear-gradient(45deg, rgba(244,239,225,0.12) 0 2px, transparent 2px 14px),
+      repeating-linear-gradient(-45deg, rgba(244,239,225,0.08) 0 2px, transparent 2px 14px),
+      linear-gradient(180deg, #1D2450, var(--indigo-deep));
   }
   .pat-kente{
-    background-image:
-      repeating-linear-gradient(90deg, var(--marigold) 0 10px, var(--berry) 10px 20px, var(--ink) 20px 30px, var(--leaf) 30px 40px);
+    background-image: repeating-linear-gradient(90deg, var(--brass) 0 10px, var(--rust) 10px 20px, var(--indigo-deep) 20px 30px, var(--brass-light) 30px 40px);
     background-size: 40px 100%;
   }
-  .pat-stripe{
-    background-image: repeating-linear-gradient(0deg, var(--paper) 0 8px, var(--berry) 8px 16px);
-  }
+  .pat-stripe{ background-image: repeating-linear-gradient(0deg, var(--paper) 0 8px, var(--rust) 8px 16px); }
   .pat-dot{
-    background-image: radial-gradient(circle, var(--marigold) 2.4px, transparent 2.6px);
-    background-size: 18px 18px;
-    background-color: #FFFFFF;
+    background-image: radial-gradient(circle, var(--brass) 2.4px, transparent 2.6px);
+    background-size: 18px 18px; background-color: var(--indigo-deep);
   }
   .pat-diamond{
     background-image:
-      linear-gradient(45deg, var(--berry) 25%, transparent 25.5%, transparent 75%, var(--berry) 75.5%),
-      linear-gradient(45deg, var(--berry) 25%, transparent 25.5%, transparent 75%, var(--berry) 75.5%);
-    background-size: 34px 34px;
-    background-position: 0 0, 17px 17px;
-    background-color: #FFFFFF;
+      linear-gradient(45deg, var(--rust) 25%, transparent 25.5%, transparent 75%, var(--rust) 75.5%),
+      linear-gradient(45deg, var(--rust) 25%, transparent 25.5%, transparent 75%, var(--rust) 75.5%);
+    background-size: 34px 34px; background-position: 0 0, 17px 17px; background-color: var(--brass);
   }
 
   /* ---------- Header ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:#FFFFFF;
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 0;
-  }
-  .wordmark{
-    font-family:'Fraunces', serif;
-    font-size:22px;
-    font-weight:600;
-    letter-spacing:0.02em;
-  }
-  .navlinks{
-    display:flex; gap:30px; list-style:none; margin:0; padding:0;
-  }
+  header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .wordmark{ font-family:'Fraunces', serif; font-size:22px; font-weight:600; letter-spacing:0.02em; color:var(--ink); }
+  .navlinks{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
   .navlinks a{
-    text-decoration:none;
-    font-size:14.5px;
-    color:var(--ink-soft);
-    padding:6px 0;
-    border-bottom:1px solid transparent;
+    text-decoration:none; font-size:13.5px; letter-spacing:0.06em;
+    color:var(--ink-soft); padding:6px 0; border-bottom:1px solid transparent;
     transition: border-color .15s ease, color .15s ease;
   }
-  .navlinks a:hover{ color:var(--ink); border-color:var(--berry); }
+  .navlinks a:hover{ color:var(--ink); border-color:var(--rust); }
   .nav-cta{
-    display:inline-block;
-    font-size:14px;
-    background:#FFFFFF;
-    color:var(--paper);
-    padding:10px 18px;
-    text-decoration:none;
-    border-radius:2px;
-    border:1px solid var(--ink);
-    transition:background .15s ease, color .15s ease;
+    display:inline-block; font-size:14px; background:var(--ink); color:var(--paper);
+    padding:10px 18px; text-decoration:none; border-radius:2px; border:1px solid var(--ink);
+    font-weight:600; transition:background .15s ease, color .15s ease;
   }
   .nav-cta:hover{ background:transparent; color:var(--ink); }
   .nav-toggle{ display:none; background:none; border:0; cursor:pointer; padding:8px; }
-  .nav-toggle span{ display:block; width:22px; height:2px; background:#FFFFFF; margin:5px 0; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
 
   /* ---------- Hero ---------- */
-  .hero{
-    padding:76px 0 64px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap:56px;
-    align-items:center;
-  }
-  .kicker{
-    font-size:14px;
-    color:var(--berry);
-    margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:clamp(38px, 5.6vw, 68px);
-    max-width:11ch;
-  }
-  .hero-sub{
-    margin-top:22px;
-    max-width:46ch;
-    font-size:17.5px;
-    color:var(--ink-soft);
-  }
-  .hero-actions{
-    margin-top:34px;
-    display:flex; gap:14px; flex-wrap:wrap;
-  }
-  .btn{
-    display:inline-block;
-    padding:13px 24px;
-    text-decoration:none;
-    font-size:15px;
-    border-radius:2px;
-    border:1px solid var(--ink);
-  }
-  .btn-solid{ background:var(--ink); color:var(--paper); }
-  .btn-solid:hover{ background:var(--berry); border-color:var(--berry); }
+  .hero{ padding:76px 0 64px; border-bottom:1px solid var(--line); }
+  .hero-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:center; }
+  .kicker{ font-size:13px; letter-spacing:0.08em; color:var(--rust); margin-bottom:18px; }
+  .hero h1{ font-size:clamp(38px, 5.6vw, 68px); max-width:12ch; color:var(--ink); }
+  .hero-sub{ margin-top:22px; max-width:46ch; font-size:17.5px; color:var(--ink-soft); }
+  .hero-actions{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ display:inline-block; padding:13px 24px; text-decoration:none; font-size:15px; border-radius:2px; border:1px solid var(--ink); }
+  .btn-solid{ background:var(--ink); color:var(--paper); font-weight:600; }
+  .btn-solid:hover{ background:var(--indigo-deep); border-color:var(--indigo-deep); }
   .btn-line{ background:transparent; color:var(--ink); }
   .btn-line:hover{ background:var(--ink); color:var(--paper); }
-
-  .hero-art{
-    aspect-ratio: 4 / 5;
-    border-radius:2px;
-    position:relative;
-  }
-  .hero-art::before{
-    content:"";
-    position:absolute; inset:14px;
-    border:1px solid rgba(251,246,236,0.5);
-  }
+  .hero-art{ aspect-ratio: 4 / 5; border-radius:2px; position:relative; }
+  .hero-art::before{ content:""; position:absolute; inset:14px; border:1px solid rgba(244,239,225,0.35); }
 
   /* ---------- Marquee ---------- */
-  .marquee-band{
-    background:var(--ink);
-    color:var(--paper);
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
-  .marquee-track{
-    display:flex;
-    width:max-content;
-    animation: scroll 32s linear infinite;
-    padding:14px 0;
-  }
+  .marquee-band{ background:var(--indigo-deep); overflow:hidden; border-bottom:1px solid var(--line); }
+  .marquee-track{ display:flex; width:max-content; animation: scroll 32s linear infinite; padding:14px 0; }
   .marquee-track span{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-size:19px;
-    padding:0 26px;
-    white-space:nowrap;
-    color:var(--marigold);
+    font-family:'Fraunces', serif; font-style:italic; font-size:19px;
+    padding:0 26px; white-space:nowrap; color:var(--brass-light);
   }
-  @keyframes scroll{
-    from{ transform:translateX(0); }
-    to{ transform:translateX(-50%); }
-  }
+  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------- Trust strip ---------- */
+  .trust{ border-bottom:1px solid var(--line); background:var(--paper-dim); }
+  .trust-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:28px 0; }
+  .trust-item{ text-align:center; font-size:13px; letter-spacing:0.04em; color:var(--ink-soft); }
+  .trust-item strong{ display:block; color:var(--ink); font-family:'Fraunces',serif; font-style:italic; font-size:17px; font-weight:500; margin-bottom:4px; letter-spacing:0; }
 
   /* ---------- Section shell ---------- */
   section{ padding:88px 0; }
-  .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:30px;
-    margin-bottom:44px;
-    border-bottom:1px solid var(--line);
-    padding-bottom:24px;
-  }
-  .section-head h2{ font-size:clamp(28px, 3.4vw, 40px); max-width:14ch; }
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:44px; border-bottom:1px solid var(--line); padding-bottom:24px; }
+  .section-head h2{ font-size:clamp(28px, 3.4vw, 40px); max-width:14ch; color:var(--ink); }
   .section-head p{ max-width:34ch; color:var(--ink-soft); font-size:15px; }
 
   /* ---------- Collections ---------- */
   .collections{ background:var(--paper-dim); border-bottom:1px solid var(--line); }
-  .coll-grid{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap:22px;
-  }
+  .coll-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:22px; }
   .coll-card{ grid-column: span 2; }
   .coll-card:first-child{ grid-column: span 2; grid-row: span 2; }
   .coll-card .swatch{ aspect-ratio: 1 / 1; }
   .coll-card:first-child .swatch{ aspect-ratio: 1/ 1.34; }
   .coll-info{ padding-top:14px; display:flex; justify-content:space-between; gap:12px; }
-  .coll-info h3{ font-size:20px; font-weight:500; }
-  .coll-info .from{ font-size:14px; color:var(--ink-soft); white-space:nowrap; }
+  .coll-info h3{ font-size:20px; font-weight:500; color:var(--ink); }
+  .coll-info .from{ font-size:14px; color:var(--rust); white-space:nowrap; }
   .coll-info .desc{ font-size:14px; color:var(--ink-soft); margin-top:4px; }
 
   /* ---------- Story ---------- */
-  .story-grid{
-    display:grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap:64px;
-    align-items:center;
-  }
+  .story-grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:64px; align-items:center; }
   .story-art{ aspect-ratio: 5/6; }
-  .story h2{ font-size:clamp(30px,4vw,44px); max-width:12ch; }
+  .story h2{ font-size:clamp(30px,4vw,44px); max-width:12ch; color:var(--ink); }
   .story-body{ margin-top:22px; max-width:52ch; color:var(--ink-soft); font-size:16.5px; }
   .story-body p + p{ margin-top:14px; }
-  .signature{ margin-top:28px; font-family:'Fraunces',serif; font-style:italic; font-size:18px; }
+  .signature{ margin-top:28px; font-family:'Fraunces',serif; font-style:italic; font-size:18px; color:var(--rust); }
 
   /* ---------- Process ---------- */
   .process{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .process-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:40px;
-  }
+  .process-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:40px; }
   .process-item{ border-left:1px solid var(--line); padding-left:24px; }
-  .process-num{ font-family:'Fraunces',serif; font-size:15px; color:var(--berry); margin-bottom:14px; }
-  .process-item h3{ font-size:19px; font-weight:500; margin-bottom:10px; }
+  .process-num{ font-family:'Fraunces',serif; font-size:15px; color:var(--rust); margin-bottom:14px; }
+  .process-item h3{ font-size:19px; font-weight:500; margin-bottom:10px; color:var(--ink); }
   .process-item p{ color:var(--ink-soft); font-size:14.5px; }
 
   /* ---------- Lookbook ---------- */
-  .lookbook-grid{
-    display:grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap:18px;
-  }
+  .lookbook{ background:var(--paper-dim); border-bottom:1px solid var(--line); }
+  .lookbook-grid{ display:grid; grid-template-columns: repeat(6, 1fr); gap:18px; }
   .lb1{ grid-column:span 2; aspect-ratio:3/4; }
   .lb2{ grid-column:span 2; aspect-ratio:3/4; margin-top:36px; }
   .lb3{ grid-column:span 2; aspect-ratio:3/4; }
+  .lookbook-follow{ margin-top:36px; text-align:center; font-size:14px; color:var(--ink-soft); }
+  .lookbook-follow strong{ color:var(--rust); font-weight:600; }
 
-  /* ---------- Contact ---------- */
-  .contact{ background:var(--ink); color:var(--paper); }
-  .contact-grid{
-    display:grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap:60px;
-  }
+  /* ---------- Testimonials ---------- */
+  .testimonials-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .testimonial{ border-top:1px solid var(--line); padding-top:20px; }
+  .testimonial p.quote{ font-family:'Fraunces',serif; font-style:italic; font-size:19px; color:var(--ink); max-width:32ch; }
+  .testimonial p.who{ margin-top:16px; font-size:13px; letter-spacing:0.04em; color:var(--rust); }
+
+  /* ---------- Contact (dark closing panel) ---------- */
+  .contact{ background:var(--indigo-deep); color:var(--paper); }
+  .contact-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:60px; }
   .contact h2{ color:var(--paper); font-size:clamp(28px,3.6vw,40px); max-width:12ch; }
-  .contact-lede{ margin-top:18px; color:rgba(251,246,236,0.75); max-width:40ch; }
+  .contact-lede{ margin-top:18px; color:rgba(244,239,225,0.72); max-width:40ch; }
   .contact-list{ margin-top:34px; list-style:none; padding:0; }
-  .contact-list li{ padding:14px 0; border-top:1px solid rgba(251,246,236,0.18); font-size:15px; }
-  .contact-list li:last-child{ border-bottom:1px solid rgba(251,246,236,0.18); }
-  .contact-list .label{ color:var(--marigold); display:block; font-size:12.5px; margin-bottom:4px; }
+  .contact-list li{ padding:14px 0; border-top:1px solid var(--line-dark); font-size:15px; }
+  .contact-list li:last-child{ border-bottom:1px solid var(--line-dark); }
+  .contact-list .label{ color:var(--brass-light); display:block; font-size:12.5px; margin-bottom:4px; letter-spacing:0.04em; }
 
   form{ display:grid; gap:16px; }
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  label{ font-size:13px; color:rgba(251,246,236,0.7); display:block; margin-bottom:7px; }
+  label{ font-size:13px; color:rgba(244,239,225,0.65); display:block; margin-bottom:7px; }
   input, textarea{
-    width:100%;
-    background:transparent;
-    border:0;
-    border-bottom:1px solid rgba(251,246,236,0.35);
-    color:var(--paper);
-    font-family:'Archivo',sans-serif;
-    font-size:15px;
-    padding:9px 2px;
+    width:100%; background:transparent; border:0; border-bottom:1px solid rgba(244,239,225,0.32);
+    color:var(--paper); font-family:'Archivo',sans-serif; font-size:15px; padding:9px 2px;
   }
-  input::placeholder, textarea::placeholder{ color:rgba(251,246,236,0.35); }
+  input::placeholder, textarea::placeholder{ color:rgba(244,239,225,0.35); }
   textarea{ resize:vertical; min-height:90px; }
   .form-submit{
-    margin-top:6px;
-    justify-self:start;
-    background:var(--marigold);
-    border:1px solid var(--marigold);
-    color:var(--ink);
-    padding:13px 26px;
-    font-size:15px;
-    font-family:'Archivo',sans-serif;
-    font-weight:600;
-    border-radius:2px;
-    cursor:pointer;
+    margin-top:6px; justify-self:start; background:var(--brass); border:1px solid var(--brass);
+    color:var(--indigo-deep); padding:13px 26px; font-size:15px; font-family:'Archivo',sans-serif;
+    font-weight:600; border-radius:2px; cursor:pointer;
   }
-  .form-submit:hover{ background:transparent; color:var(--marigold); }
-  .form-note{ font-size:12.5px; color:rgba(251,246,236,0.5); margin-top:4px; }
+  .form-submit:hover{ background:transparent; color:var(--brass-light); }
+  .form-note{ font-size:12.5px; color:rgba(244,239,225,0.5); margin-top:4px; }
 
   /* ---------- Footer ---------- */
-  footer{ padding:30px 0; }
-  .foot-row{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
-    font-size:13px; color:var(--ink-soft);
-  }
-  .foot-links{ display:flex; gap:20px; list-style:none; padding:0; margin:0; }
-  .foot-links a{ text-decoration:none; color:var(--ink-soft); }
-  .foot-links a:hover{ color:var(--ink); }
+  footer{ background:var(--indigo-deep); padding:64px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap:32px; padding-bottom:44px; }
+  .foot-brand .wordmark{ display:block; margin-bottom:10px; color:var(--paper); }
+  .foot-brand p{ color:rgba(244,239,225,0.68); font-size:14px; max-width:28ch; }
+  .foot-col h4{ font-size:12.5px; letter-spacing:0.06em; color:var(--brass-light); margin-bottom:16px; font-weight:600; }
+  .foot-col ul{ list-style:none; padding:0; margin:0; display:grid; gap:11px; }
+  .foot-col a{ text-decoration:none; color:rgba(244,239,225,0.68); font-size:14.5px; }
+  .foot-col a:hover{ color:var(--paper); }
+  .foot-bottom{ border-top:1px solid var(--line-dark); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:13px; color:rgba(244,239,225,0.6); }
+  .foot-bottom a{ text-decoration:none; color:rgba(244,239,225,0.6); }
+  .foot-bottom a:hover{ color:var(--paper); }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 920px){
@@ -353,20 +235,21 @@
     .lookbook-grid{ grid-template-columns: repeat(2,1fr); }
     .lb1,.lb2,.lb3{ grid-column:span 1; margin-top:0; }
     .form-row{ grid-template-columns:1fr; }
+    .trust-row{ grid-template-columns:1fr; gap:16px; }
+    .testimonials-grid{ grid-template-columns:1fr; gap:24px; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
   }
   @media (max-width: 720px){
     .navlinks{
-      position:absolute; top:100%; left:0; right:0;
-      background:var(--paper);
-      flex-direction:column; gap:0;
-      border-bottom:1px solid var(--line);
-      display:none;
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      flex-direction:column; gap:0; border-bottom:1px solid var(--line); display:none;
     }
     .navlinks.open{ display:flex; }
     .navlinks a{ padding:16px 28px; border-bottom:1px solid var(--line); width:100%; }
     .nav-toggle{ display:block; }
     .nav-cta{ display:none; }
     .section-head{ flex-direction:column; align-items:flex-start; gap:10px; }
+    .foot-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -378,9 +261,8 @@
     <ul class="navlinks" id="navlinks">
       <li><a href="#top">HOME</a></li>
       <li><a href="#collections">SHOP</a></li>
-      <li><a href="#contact">CONTACT US </a></li>
-      <li><a href="#story">ABOUT US </a></li>
-      
+      <li><a href="#contact">CONTACT US</a></li>
+      <li><a href="#story">ABOUT US</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Book a fitting</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
@@ -394,11 +276,11 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="kicker">Contemporary West African ready-to-wear</p>
+        <p class="kicker">CONTEMPORARY GHANAIAN READY-TO-WEAR</p>
         <h1>Cloth carries memory.</h1>
-        <p class="hero-sub">KANAE RUGS reworks Ankara, Kente, Adire and Aso-oke into considered, modern silhouettes — cut in small runs and finished by hand in our Accra atelier.</p>
+        <p class="hero-sub">Kanae Rugs reworks Ankara, Kente, Adire and Aso-oke into considered, modern silhouettes — cut in small runs and finished by hand in our Accra atelier.</p>
         <div class="hero-actions">
-          <a href="#collections" class="btn btn-solid">View the collection</a>
+          <a href="#collections" class="btn btn-solid">Shop the collection</a>
           <a href="#process" class="btn btn-line">How made-to-order works</a>
         </div>
       </div>
@@ -412,6 +294,14 @@
     <div class="marquee-track">
       <span>Ankara</span><span>Kente</span><span>Adire</span><span>Aso-oke</span><span>Kitenge</span><span>Bògòlanfini</span>
       <span>Ankara</span><span>Kente</span><span>Adire</span><span>Aso-oke</span><span>Kitenge</span><span>Bògòlanfini</span>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="wrap trust-row">
+      <div class="trust-item"><strong>Tracked shipping</strong>Fast dispatch, every order</div>
+      <div class="trust-item"><strong>Easy returns</strong>Exchanges within 14 days</div>
+      <div class="trust-item"><strong>Ethically made</strong>Hand-finished in Accra</div>
     </div>
   </div>
 
@@ -463,8 +353,8 @@
       <div>
         <h2>Built on a name, not a trend.</h2>
         <div class="story-body">
-          <p>Orikì began in a two-machine sewing room in Accra, reworking fabric passed down from a grandmother who traded cloth at Makola Market. The name means "praise name" — the lines recited to remind someone who they are.</p>
-          <p>Replace this paragraph with your own founding story: where you learned to sew, who taught you, and why the first collection looked the way it did.</p>
+          <p>Kanae Rugs began in a two-machine sewing room in Accra, reworking fabric passed down through a family who traded cloth at Makola Market. Replace this paragraph with your own founding story — where you learned to sew, who taught you, and what the name means to you.</p>
+          <p>Replace this second paragraph with why the first collection looked the way it did, and what's changed since.</p>
         </div>
         <p class="signature">— Founder name, Creative Director</p>
       </div>
@@ -511,6 +401,30 @@
         <div class="lb2 swatch pat-dot"><span class="tag">Look 05</span></div>
         <div class="lb3 swatch pat-mud"><span class="tag">Look 06</span></div>
       </div>
+      <p class="lookbook-follow">Tag <strong>@kanae.rugs</strong> for a chance to be featured — follow along on Instagram.</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What clients say</h2>
+        <p>Placeholder quotes — swap in your own reviews once you have them.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p class="quote">"The fit was perfect and the fabric felt so much richer in person."</p>
+          <p class="who">Client name, city</p>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"I get compliments every single time I wear this piece."</p>
+          <p class="who">Client name, city</p>
+        </div>
+        <div class="testimonial">
+          <p class="quote">"Ordered for a wedding and it arrived early, beautifully packed."</p>
+          <p class="who">Client name, city</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -521,8 +435,8 @@
         <p class="contact-lede">Most replies land within one working day. For rush occasion wear, mention your date and we'll flag it.</p>
         <ul class="contact-list">
           <li><span class="label">WhatsApp</span>+233 00 000 0000</li>
-          <li><span class="label">Email</span>hello@orikistudio.example</li>
-          <li><span class="label">Instagram</span>@oriki.studio</li>
+          <li><span class="label">Email</span>hello@kanaerugs.example</li>
+          <li><span class="label">Instagram</span>@kanae.rugs</li>
           <li><span class="label">Atelier</span>Osu, Accra — visits by appointment</li>
         </ul>
       </div>
@@ -554,13 +468,42 @@
 </main>
 
 <footer>
-  <div class="wrap foot-row">
-    <span>© <span id="year"></span> KANAE RUGS Studio. All rights reserved.</span>
-    <ul class="foot-links">
-      <li><a href="#collections">Collections</a></li>
-      <li><a href="#story">Story</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="wordmark">KANAE RUGS</span>
+        <p>Heritage in every stitch, hand-woven in Ghana.</p>
+      </div>
+      <div class="foot-col">
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="#story">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>CUSTOMER</h4>
+        <ul>
+          <li><a href="#contact">Shipping</a></li>
+          <li><a href="#contact">Returns</a></li>
+          <li><a href="#contact">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>SOCIALS</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Kanae Rugs. All rights reserved.</span>
+      <span>
+        <a href="#">Privacy policy</a> &nbsp;&nbsp; <a href="#">Terms of service</a>
+      </span>
+    </div>
   </div>
 </footer>
 
